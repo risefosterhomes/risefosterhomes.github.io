@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Foster Homes</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #container {
+            display: grid;
+            /*background-color: yellow;*/
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            grid-template-rows: 1fr 2fr 2fr;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .sun-item {
+            grid-row: 1 / 1;
+            grid-column: 1 / 1;
+            width: 180px;
+        }
+
+        .cloud-item {
+            grid-row: 1 / 1;
+            grid-column: 3 / 3;
+            width: 120px;
+            margin: 24px 24px 0px 23px;
+        }
+
+        .bottom-drawing-item {
+            grid-row: 3 / 3;
+            grid-column: 1 / span 3;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: bottom;
+            background-image: url(assets/bottom-phone.svg)
+        }
+
+        .logo-container-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            grid-row: 1 / span 3;
+            grid-column: 1 / span 3;
+            margin-bottom: 100px;
+        }
+
+        .button-container-item {
+            width: 100%;
+            margin: 24px 0px 0px 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .logo {
+            height: 45%;
+        }
+
+        .desktop-logo {
+            display: none;
+        }
+
+        .image-button {
+            display: inline-block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .image-button img {
+            margin-bottom: 40px;
+            display: block;
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .image-button:hover img {
+            transform: scale(1.1);
+        }
+
+        .donate-button {
+            margin: 0px 0px 0px 0px
+        }
+
+        .mission-button {
+            margin-left: 36px;
+        }
+
+        .paypal-pixel {
+            display: inline;
+        }
+
+
+        @media (min-width: 600px) {
+            .bottom-drawing-item {
+                background-image: url(assets/bottom-tablet.svg)
+            }
+
+            .logo {
+                height: 50%;
+            }
+
+            .image-button img {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        @media (min-width: 850px) {
+            .bottom-drawing-item {
+                background-image: url(assets/bottom-desktop.svg)
+            }
+
+            .button-container-item {
+                align-items: end;
+                justify-content: space-around;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .desktop-logo {
+                display: block;
+                max-width: 300px;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img src="assets/sun.svg" alt="sun" class="sun-item" />
+        <img src="assets/cloud.svg" alt="cloud" class="cloud-item" />
+        <div class="logo-container-item">
+            <img src="assets/logo.png" alt="logo" class="logo" />
+            <div class="button-container-item">
+                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="hosted_button_id" value="TM8SMHW8MGULU" />
+                    <button type="submit" class="image-button donate-button" id="donateButton" type="button"><img
+                            src="assets/donate.png" alt="bg" /></button>
+                    <img class="paypal-pixel" alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+                <img src="assets/logo.png" alt="logo" class="desktop-logo" />
+                <button class="image-button mission-button" id="missionButton" type="button"><img
+                        src="assets/our-mission.png" alt="our mission" /></button>
+            </div>
+        </div>
+        <div class="bottom-drawing-item">
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+                When a child enters the foster care system, what comes after? Statistically, around seventy five
+                percent of these children will leave and are susceptible to the predators of human trafficking.
+                Our goal is to afford several homes that would allow a transitional process that prepares
+                children to become independent and functional members of our society, but most importantly,
+                provide a family to always come home to.
+            </p>
+            <p>
+                As of today, twenty seven children have gone through our program. Just imagine how God could
+                multiply this number with your help. However, this care is expensive and cannot be done without
+                you. Please consider clicking the donation link and assisting a child with a Christ-centered
+                home, food, clothing, traveling expenses, school supplies and even a chance to search for their
+                biological parents.
+            </p>
+            <p>
+                May God bless you for your efforts, and always remember that children should be saved, not sold
+            </p>.
+        </div>
+
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("missionButton");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
